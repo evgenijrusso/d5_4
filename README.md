@@ -13,6 +13,7 @@
 7. GIT -> GitHub -> Share Project on GitHub
 8. Заливаем в репозиторий GitHub(push)
 9. Добавление приложений `news` и  `accounts`
-10. Миграции
-
+10. Миграции, подключил базу данных в sqlliteStudio c `db.sqlite3`
+11. Появилось решение поменять имя одного из приложений (news). Установил пакет `django-rename-app`,
+добавил его в `INSTALLED_APPS`
 

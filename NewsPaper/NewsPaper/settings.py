@@ -49,8 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_rename_app',
     'news',
-    'account',
 ]
 
 ROOT_URLCONF = 'NewsPaper.urls'
