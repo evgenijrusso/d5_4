@@ -1,5 +1,3 @@
-
-
 from django.db import models
 from django.utils import timezone
 
@@ -19,7 +17,7 @@ POSITIONS = [
 
 
 class Order(models.Model):  # Заказ
-    time_in = models.DateTimeField(default=timezone.now)                         #(auto_now_add=True)
+    time_in = models.DateTimeField(default=timezone.now)  #(auto_now_add=True)
     time_out = models.DateTimeField(null=True)
     cost = models.FloatField(default=9.0)  # стоимость
     pickup = models.BooleanField(default=False)  # самовывоза (True) или доставка(False)
@@ -45,8 +43,19 @@ class ProductOrder(models.Model):
     order = models.ForeignKey('Order', on_delete=models.CASCADE, null=True, blank=True)
     amount = models.IntegerField(default=1)  # кол-во продуктов в заказе
 
-'''
+''' 
 Добавил для полей order, product, staff (все внешние ключи) опции  null=True, blank=True. Причина: миграция не 
 может создать пустое поле. Без этих опций пришлось бы удалять все миграции и создаваать их заново (и чистить БД)
 Так же изменил опцию  (auto_now_add=True) на timezone.now. Примерно такая же причина  
 '''
+
+# class Author(models.Model):
+#     full_name = models.CharField(max_length=64)
+#     name = models.CharField(null=True, max_length=64)
+#
+#     def some_method(self):
+#         self.name = self.full_name.split()[0]
+#         self.save()
+#
+# b = Author.some_method()
+# print()
