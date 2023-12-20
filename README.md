@@ -16,4 +16,6 @@
 10. Миграции, подключил базу данных в sqlliteStudio c `db.sqlite3`
 11. Появилось решение поменять имя одного из приложений (news). Установил пакет `django-rename-app`,
 добавил его в `INSTALLED_APPS`
+12. `python manage.py createsuperuser` admin-1
+13. Регистрация моделей в админке
 
