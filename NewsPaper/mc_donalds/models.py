@@ -50,8 +50,8 @@ class ProductOrder(models.Model):
 '''
 
 class Country(models.Model):
-    name = models.CharField(null=True, blank = True, max_length=200)
-    classifier = models.CharField(null=True, blank = True, max_length=10)
-    name_en = models.CharField(null=True, blank = True, max_length=200)
-    name_ru = models.CharField(null=True, blank=True, max_length=200)
+     name = models.CharField(blank = True, max_length=200)
+     classifier = models.CharField(blank = True, max_length=10)
+     name_en = models.CharField(blank = True, max_length=200)
+     name_ru = models.CharField(blank=True, max_length=200)
 
