@@ -1,20 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-director = 'DI'
-admin = 'AD'
-cook = 'CO'
-cashier = 'CA'
-cleaner = 'CL'
-
-POSITIONS = [
-    (director, 'Директор'),
-    (admin, 'Администратор'),
-    (cook, 'Повар'),
-    (cashier, 'Кассир'),
-    (cleaner, 'Уборщик')
-]
-
 
 class Order(models.Model):  # Заказ
     time_in = models.DateTimeField(default=timezone.now)  #(auto_now_add=True)
@@ -27,6 +13,21 @@ class Order(models.Model):  # Заказ
 
 
 class Staff(models.Model):  # штат
+
+    director = 'DI'
+    admin = 'AD'
+    cook = 'CO'
+    cashier = 'CA'
+    cleaner = 'CL'
+
+    POSITIONS = [
+        (director, 'Директор'),
+        (admin, 'Администратор'),
+        (cook, 'Повар'),
+        (cashier, 'Кассир'),
+        (cleaner, 'Уборщик')
+    ]
+
     full_name = models.CharField(max_length=250)
     position = models.CharField(max_length=2, choices=POSITIONS, default=cashier)      # должность
     labor_contract = models.IntegerField()
