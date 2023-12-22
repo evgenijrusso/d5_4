@@ -49,13 +49,8 @@ class ProductOrder(models.Model):
 Так же изменил опцию  (auto_now_add=True) на timezone.now. Примерно такая же причина  
 '''
 
-# class Author(models.Model):
-#     full_name = models.CharField(max_length=64)
-#     name = models.CharField(null=True, max_length=64)
-#
-#     def some_method(self):
-#         self.name = self.full_name.split()[0]
-#         self.save()
-#
-# b = Author.some_method()
-# print()
+class Country(models.Model):
+    name = models.CharField(null=True, Blank = True, max_length=200)
+    name_en = models.CharField(null=True, Blank = True, max_length=200)
+    name_ru = models.CharField(null=True, Blank=True, max_length=200)
+
