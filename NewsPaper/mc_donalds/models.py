@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Order(models.Model):  # Заказ
     time_in = models.DateTimeField(default=timezone.now)  #(auto_now_add=True)
     time_out = models.DateTimeField(null=True)
@@ -11,7 +10,16 @@ class Order(models.Model):  # Заказ
     staff = models.ForeignKey('Staff', on_delete=models.CASCADE, null=True, blank=True)
     products = models.ManyToManyField('Product', through='ProductOrder')
 
+    def finish_order(self):
+        self.time_out = datetime.now()
+        self.complete = True
+        self.save()
 
+    def get_duration(self):
+        if self.complete:
+            return (self.time_out-self.time_in).total_seconds()
+        else:
+            return (datetime.now()- self.time_in).total_seconds()  # USE_TZ=false  временно
 class Staff(models.Model):  # штат
 
     director = 'DI'
