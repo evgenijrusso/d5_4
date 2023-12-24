@@ -7,7 +7,7 @@ class Order(models.Model):  # Заказ
     cost = models.FloatField(default=9.0)  # стоимость
     pickup = models.BooleanField(default=False)  # самовывоза (True) или доставка(False)
     complete = models.BooleanField(default=False) # Заказ уже выполнен
-    staff = models.ForeignKey('Staff', on_delete=models.CASCADE, null=True, blank=True)
+    staff = models.ForeignKey('Staff', on_delete=models.CASCADE, null=True, blank=True) # add related_name='order'
     products = models.ManyToManyField('Product', through='ProductOrder')
 
     def finish_order(self):
@@ -57,6 +57,7 @@ class ProductOrder(models.Model):
 может создать пустое поле. Без этих опций пришлось бы удалять все миграции и создаваать их заново (и чистить БД)
 Так же изменил опцию  (auto_now_add=True) на timezone.now. Примерно такая же причина  
 '''
+#   ------------------ тестовая модель с данными ---------------------------
 
 class Country(models.Model):
      name = models.CharField(blank = True, max_length=200)
