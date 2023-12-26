@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.db import migrations, models
 
 class Order(models.Model):  # Заказ
     time_in = models.DateTimeField(default=timezone.now)  #(auto_now_add=True)
@@ -60,8 +61,23 @@ class ProductOrder(models.Model):
 
     #   ------------------ тестовая модель с данными ---------------------------
 
+DATA_REPAIR = (
+    ('IR', 'Иран'),
+    ('KG', 'Кыргызстан (Киргизия)'),
+    ('KR', 'Южная Корея'),
+    ('MD', 'Молдова'),
+    ('AE', 'Объединенные Арабские Эмираты (ОАЭ)'),
+    ('PS', 'Палестина'),
+)
+
 class Country(models.Model):
-   name = models.CharField(blank=True, max_length=200)
-   classifier = models.CharField(blank=True, max_length=10)
-   name_en = models.CharField(blank=True, max_length=200)
-   name_ru = models.CharField(blank=True, max_length=200)
+    name = models.CharField(blank=True, max_length=200)
+    classifier = models.CharField(blank=True, max_length=10)
+    name_en = models.CharField(blank=True, max_length=200)
+    name_ru = models.CharField(blank=True, max_length=200)
+
+    # def data_repair(apps, schema_editor):
+    #     model = apps.get_model('mc_donalds', 'Country')
+    #     for classifier, name in DATA_REPAIR:
+    #         if classifier == name[0]:
+    #             name_ru = name[1]
