@@ -65,3 +65,19 @@ class Country(models.Model):
      name_en = models.CharField(blank = True, max_length=200)
      name_ru = models.CharField(blank=True, max_length=200)
 
+
+TYPES = [
+    (news, 'Новости'),
+    (articles, 'Статьи')
+]
+
+class PostCategory(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment_text = models.TextField(blank=False)
+    comment_time_in = models.DateTimeField(timezone.now)
+    comment_rate = models.IntegerField(default=0)
