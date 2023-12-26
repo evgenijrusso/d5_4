@@ -57,14 +57,6 @@ class ProductOrder(models.Model):
 может создать пустое поле. Без этих опций пришлось бы удалять все миграции и создаваать их заново (и чистить БД)
 Так же изменил опцию  (auto_now_add=True) на timezone.now. Примерно такая же причина  
 '''
-#   ------------------ тестовая модель с данными ---------------------------
-
-class Country(models.Model):
-     name = models.CharField(blank = True, max_length=200)
-     classifier = models.CharField(blank = True, max_length=10)
-     name_en = models.CharField(blank = True, max_length=200)
-     name_ru = models.CharField(blank=True, max_length=200)
-
 
 TYPES = [
     (news, 'Новости'),
@@ -81,3 +73,11 @@ class Comment(models.Model):
     comment_text = models.TextField(blank=False)
     comment_time_in = models.DateTimeField(timezone.now)
     comment_rate = models.IntegerField(default=0)
+
+    #   ------------------ тестовая модель с данными ---------------------------
+
+    class Country(models.Model):
+        name = models.CharField(blank=True, max_length=200)
+        classifier = models.CharField(blank=True, max_length=10)
+        name_en = models.CharField(blank=True, max_length=200)
+        name_ru = models.CharField(blank=True, max_length=200)
